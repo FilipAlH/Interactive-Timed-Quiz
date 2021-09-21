@@ -1,0 +1,82 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 80px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 250%;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+h3 {
+    font-size: 150%;
+}
+
+.Highscore {
+
+}
+
+.Time {
+
+}
+
+.Main-page {
+
+}
+
+#start-quiz {
+
+}
+
+.HighScorePage {
+
+}
+
+.DonePage {
+
+}
+
+#FinalScore {
+
+}
+
+.Quiz {
+
+}
+
+#question {
+
+}
+
+#question-1 {
+
+}
+
+#question-2 {
+    
+}
+
+#question-3 {
+    
+}
+
+#question-4 {
+    
+}
