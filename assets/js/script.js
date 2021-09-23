@@ -1,4 +1,4 @@
-//timer function with start button event listener
+//these are the primary variables associated with the main game, main menu, and timer
 
 let startQuizButton = document.querySelector('.start-quiz')
 let timeLeft = document.querySelector('.Timer');
@@ -14,7 +14,7 @@ let score = document.querySelector('.FinalScore')
 
 let hsRedirect = document.querySelector("a")
 let mainRedirect = document.querySelector(".ReturnToMenu")
-
+//these are the functions responsible for hiding the elements and showing them when they are needed
 function hideMain() {
     main.style.display = "none"
 }
@@ -78,7 +78,7 @@ function hideQ4() {
 function showQ4() {
     question4.style.display = "flex"
 }
-
+//this is to hide the elements until they are needed
 hideQuiz()
 hideHighScore()
 hideDone()
@@ -86,7 +86,7 @@ hideQ1()
 hideQ2()
 hideQ3()
 hideQ4()
-
+//this will take you to the leaderboards
 function redirectHs(event) {
     event.preventDefault()
     hideMain()
@@ -97,16 +97,14 @@ function redirectHs(event) {
     hideQ4()
     showHighScore()
 }
-
+//this refreshes the game page after you have cleared it to reset all of the elements 
 function redirectMain(event) {
     location.reload();
     event.preventDefault()
-    /*
-    hideHighScore()
-    showMain()
-    */
 }
 
+//this is the timer that begins when the game is run and ends when all the questions are cleared or the timer runs out
+//the score is based off the time remaining in the end
 startQuizButton.addEventListener("click", runTimer)
 hsRedirect.addEventListener("click", redirectHs)
 mainRedirect.addEventListener("click", redirectMain)
@@ -130,7 +128,9 @@ function runTimer(event) {
         } 
     }, 1000);
 }
-
+//this is the main game function where the questions are put into their section
+//the answers are generated into buttons and on pressing the any button you move on to the next question 
+//with or without time pentaly
 function runGame() {
     hideMain()
     showQuiz()
@@ -257,6 +257,8 @@ function runGame() {
 }
 
 //this handles the submission and storage of the leaderboards
+//the function retrieves from local storage and then saves the previous list along with the new addition
+//the event listener is triggered from the submission of a name 
 let highScores = document.querySelector('.HighScores');
 let toHighScores = document.querySelector(".send")
 let removal = document.querySelector(".delete-item-btn")
