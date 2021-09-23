@@ -91,13 +91,20 @@ function redirectHs(event) {
     event.preventDefault()
     hideMain()
     hideDone()
+    hideQ1()
+    hideQ2()
+    hideQ3()
+    hideQ4()
     showHighScore()
 }
 
 function redirectMain(event) {
+    location.reload();
     event.preventDefault()
+    /*
     hideHighScore()
     showMain()
+    */
 }
 
 startQuizButton.addEventListener("click", runTimer)
@@ -239,14 +246,43 @@ function runGame() {
             let buttonClicked4 = event.target.textContent
             if (buttonClicked4 == answer4) {
                 finalScore = count - 1 
-                score.textContent = "Your final score was: " + String(finalScore)
+                score.textContent = "Your final score was: " + String(finalScore) + "."
             } else {
                 count = count - 10
                 finalScore = count - 1 
-                score.textContent = "Your final score was: " + String(finalScore)
+                score.textContent = "Your final score was: " + String(finalScore) + "."
             } return finalScore
         })
     }
 }
 
+//this handles the submission and storage of the leaderboards
+let highScores = document.querySelector('.HighScores');
+let toHighScores = document.querySelector(".send")
+let removal = document.querySelector(".delete-item-btn")
 
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+    let storedLeaderboards = JSON.parse(localStorage.getItem("leaderboards"));
+
+    let leaderboards = {
+        ...storedLeaderboards,
+    };
+
+    let playerName = document.querySelector(".Name").value
+    let highScoreItem = document.createElement("li")
+
+    leaderboards[playerName] = finalScore
+  
+    highScores.append(highScoreItem);
+    score.append(" Your score has been saved!")
+    
+    localStorage.setItem("leaderboards", JSON.stringify(leaderboards))
+
+    highScoreItem.innerHTML = JSON.stringify(leaderboards);
+
+    $('input[name="Name"]').val('');
+  }
+
+toHighScores.addEventListener('click', handleFormSubmit);
